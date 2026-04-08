@@ -49,7 +49,7 @@ jobs:
 
       - name: Set CONFIG Environment Variable
         run: |
-          CONFIG="android_kernel_google_tensynos"
+          CONFIG="$GITHUB_WORKSPACE/android_kernel_google_tensynos"
 
           # Set CONFIG as an environment variable for future steps
           echo "CONFIG=$CONFIG" >> $GITHUB_ENV

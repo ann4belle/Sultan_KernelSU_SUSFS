@@ -87,15 +87,13 @@ jobs:
           cd "$CONFIG"
 
           echo "Adding KernelSU..."
-          curl -LSs "https://raw.githubusercontent.com/WildKernels/Wild_KSU/stable/kernel/setup.sh" | bash -s
+          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/stable/kernel/setup.sh" | bash -s
 
       - name: Apply SUSFS Patches
         if: contains(matrix.features, 'susfs')
         run: |
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG"
-
-          SUSFS_VERSION="2.0.0"
 
           echo "Applying SUSFS patches..."
 

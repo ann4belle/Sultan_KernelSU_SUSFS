@@ -61,16 +61,19 @@ jobs:
         with:
           repository: TheWildJames/AnyKernel3
           ref: sultan-${{ inputs.codename }}
+          path: AnyKernel3
 
       - name: Clone kernel_patches
         uses: actions/checkout@v6
         with:
           repository: TheWildJames/kernel_patches
+          path: kernel_patches
 
       - name: Clone Sultan kernel
         uses: actions/checkout@v6
         with:
           repository: kerneltoast/android_kernel_google_tensynos
+          path: android_kernel_google_tensynos
 
       - name: Clone susfs4ksu
         run: |

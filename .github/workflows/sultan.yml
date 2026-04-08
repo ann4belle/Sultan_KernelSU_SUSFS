@@ -56,19 +56,27 @@ jobs:
 
           echo "CONFIG set to: $CONFIG"
 
-      - name: Clone AnyKernel3 and Other Dependencies
+      - name: Clone AnyKernel3
+        uses: actions/checkout@v6
+        with:
+          repository: TheWildJames/AnyKernel3
+          ref: sultan-${{ inputs.codename }}
+
+      - name: Clone kernel_patches
+        uses: actions/checkout@v6
+        with:
+          repository: TheWildJames/kernel_patches
+
+      - name: Clone Sultan kernel
+        uses: actions/checkout@v6
+        with:
+          repository: kerneltoast/android_kernel_google_tensynos
+
+      - name: Clone susfs4ksu
         run: |
-          echo "Cloning AnyKernel3 and other dependencies..."
-
-          ANYKERNEL_BRANCH="sultan-${{ inputs.codename }}"
-
-          # Debug print the branches
-          echo "Using branch for AnyKernel3: $ANYKERNEL_BRANCH"
+          echo "Cloning susfs4ksu..."
 
           # Clone repositories using the branch names
-          git clone https://github.com/TheWildJames/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
-          git clone https://github.com/TheWildJames/kernel_patches.git
-          git clone https://github.com/kerneltoast/android_kernel_google_tensynos
           SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
 

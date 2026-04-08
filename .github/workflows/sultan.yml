@@ -78,7 +78,7 @@ jobs:
 
           # Clone repositories using the branch names
           SUSFS_BRANCH="gki-${{ inputs.android_version }}-${{ inputs.kernel_version }}"
-          git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
+          git clone --depth 1 https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
 
       - name: Add KernelSU
         if: contains(matrix.features, 'wksu')
